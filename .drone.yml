@@ -23,7 +23,7 @@ steps:
       host: nicco.io
       username: root
       port: 1312
-      target: /srv/web/home
+      target: cd /srv/web/rauchmelder
       source:
         - ./public
         - ./docker-compose.yml
@@ -43,6 +43,6 @@ steps:
       username: root
       port: 1312
       script:
-        - cd /srv/web/home
+        - cd /srv/web/rauchmelder
         - docker-compose -f docker-compose.yml -f docker-compose.prod.yml down
         - docker-compose -f docker-compose.yml -f docker-compose.prod.yml up -d
