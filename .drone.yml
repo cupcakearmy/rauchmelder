@@ -4,6 +4,7 @@ name: default
 steps:
   - name: install
     image: node:11-alpine
+    pull: always
     commands:
       - node -v
       - npm -v
@@ -11,11 +12,13 @@ steps:
 
   - name: build
     image: node:11-alpine
+    pull: always
     commands:
       - npm run build:prod
 
   - name: copy
     image: cupcakearmy/drone-deploy
+    pull: always
     environment:
       PLUGIN_KEY:
         from_secret: ssh_key
