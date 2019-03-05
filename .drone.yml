@@ -16,7 +16,7 @@ steps:
     commands:
       - npm run build:prod
 
-  - name: copy
+  - name: deploy
     image: cupcakearmy/drone-deploy
     pull: always
     environment:
@@ -24,7 +24,7 @@ steps:
         from_secret: ssh_key
     settings:
       host: nicco.io
-      username: root
+      user: root
       port: 1312
       target: /srv/web/rauchmelder
       sources:
