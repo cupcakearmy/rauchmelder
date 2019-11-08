@@ -3,20 +3,17 @@ name: default
 
 steps:
   - name: build
-    image: node:11-alpine
+    image: node:12-alpine
     pull: always
     commands:
       - node -v
       - npm -v
-      - npm i
-      - npm run build:prod
+      - yarn
+      - yarn run build
 
   - name: deploy
     image: cupcakearmy/drone-deploy
     pull: always
-    # environment:
-    #   PLUGIN_KEY:
-    #     from_secret: ssh_key
     settings:
       host: nicco.io
       user: root
@@ -25,12 +22,11 @@ steps:
       port: 1312
       target: /srv/web/rauchmelder
       sources:
-        - ./public
-        - ./docker-compose.yml
+        - ./dist
         - ./docker-compose.prod.yml
       commands:
-        - docker-compose -f docker-compose.yml -f docker-compose.prod.yml down
-        - docker-compose -f docker-compose.yml -f docker-compose.prod.yml up -d
+        - docker-compose -f docker-compose.prod.yml down
+        - docker-compose -f docker-compose.prod.yml up -d
     when:
       event: push
       branch: master
