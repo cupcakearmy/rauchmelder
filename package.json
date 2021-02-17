@@ -7,18 +7,18 @@
   ],
   "scripts": {
     "dev": "parcel ./src/index.html",
-    "build": "parcel build ./src/index.html"
+    "build": "parcel build --no-source-maps ./src/index.html"
   },
   "dependencies": {
-    "moment": "^2.24.0",
+    "dayjs": "^1.10.4",
     "react": "16.9",
     "react-dom": "16.9"
   },
   "devDependencies": {
     "@types/react": "16.9",
     "@types/react-dom": "16.9",
-    "stylus": "^0.54.7",
     "parcel-bundler": "^1.12.4",
+    "stylus": "^0.54.7",
     "typescript": "^3.7"
   }
 }
