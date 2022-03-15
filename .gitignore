@@ -3,6 +3,7 @@ package-lock.json
 pnpm-lock.yaml
 
 .cache
+.parcel-cache
 dist
 
 .idea
